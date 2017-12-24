@@ -5,7 +5,7 @@ import csv
 def pcap2csv(filename):
     packets = parse(filename)
     columns = [column[0] for _, column in enumerate(packets[0])]
-    with open('packets.csv', 'w') as f:
+    with open('./data/packets.csv', 'w') as f:
         writer = csv.writer(f, lineterminator='\n')
         writer.writerow(columns)
         for _, packet in enumerate(packets):
@@ -46,6 +46,3 @@ def parse(filename):
             values = sorted(values.items())
             data.append(values)
     return data
-
-data_path = os.path.join('.', 'data', '10.144.0.0-2017-11-17-1300.pcap')
-pcap2csv(data_path)

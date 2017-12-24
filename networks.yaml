@@ -1,0 +1,27 @@
+networks:
+# servers
+  -
+    name: web
+    ip: 192.168.0.11
+    type: linux
+  -
+    name: dns
+    ip: 192.168.0.12
+    type: linux
+  -
+    name: mail
+    ip: 192.168.0.13
+    type: linux
+# clients
+  -
+    name: win01
+    ip: 192.168.0.101
+    type: windows
+  -
+    name: win02
+    ip: 192.168.0.102
+    type: windows
+  -
+    name: win03
+    ip: 192.168.0.103
+    type: windows

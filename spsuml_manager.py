@@ -1,9 +1,16 @@
+import spsuml
+
+
 class SpsumlManger:
     def __init__(self):
-        pass
+        self.setup()
 
     def setup(self):
-        self.spsuml = self.setup_spsuml()
+        sps = spsuml.Spsuml
+        self.spsuml = sps
 
-    def setup_spsuml(self):
-        return 1
+    def fit(self):
+        pass
+
+    def select(self):
+        pass

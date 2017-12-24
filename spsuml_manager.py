@@ -1,15 +1,12 @@
 import spsuml
 
 
-class SpsumlManger:
-    def __init__(self):
-        self.setup()
-
-    def setup(self):
-        self.spsuml = spsuml.Spsuml
+class SpsumlManager:
+    def __init__(self, networks):
+        self.spsuml = spsuml.Spsuml(networks)
 
     def fit(self, packets):
-        pass
+        self.spsuml.fit(packets)
 
     def select(self, top_num=3):
-        pass
+        return self.spsuml.select[:top_num]

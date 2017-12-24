@@ -6,11 +6,10 @@ class SpsumlManger:
         self.setup()
 
     def setup(self):
-        sps = spsuml.Spsuml
-        self.spsuml = sps
+        self.spsuml = spsuml.Spsuml
 
-    def fit(self):
+    def fit(self, packets):
         pass
 
-    def select(self):
+    def select(self, top_num=3):
         pass

@@ -3,10 +3,10 @@ from keras.models import Sequential
 from keras.utils.vis_utils import plot_model
 
 class Rnn():
-    def __init__(self, feature_size, time):
+    def __init__(self, feature_dim, time):
         self.model = Sequential()
-        self.model.add(LSTM(3, batch_input_shape=(None, time, feature_size), return_sequences=True))
-        self.model.add(LSTM(3, batch_input_shape=(None, time, feature_size), return_sequences=True))
+        self.model.add(LSTM(3, batch_input_shape=(None, time, feature_dim), return_sequences=True))
+        self.model.add(LSTM(3, batch_input_shape=(None, time, feature_dim), return_sequences=True))
         self.model.add(LSTM(3, activation='relu'))
         self.model.add(Dense(3))
         self.model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])

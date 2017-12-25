@@ -2,7 +2,7 @@ networks:
 # servers
   -
     name: web
-    ip: 192.168.0.11
+    ip: 65.208.228.223
     type: linux
   -
     name: dns
@@ -15,7 +15,7 @@ networks:
 # clients
   -
     name: win01
-    ip: 192.168.0.101
+    ip: 145.254.160.237
     type: windows
   -
     name: win02

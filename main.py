@@ -29,9 +29,11 @@ if __name__ == '__main__':
 
     # setup spsuml_manger
     manager = spsuml_manager.SpsumlManager(networks=networks)
+    manager.setup_spsuml(feature_dim=5, time=10)
 
     # fit networks
-    manager.fit(packets=packets)
+    preprocessed_packets = manager.preprocess(packets=packets)
+    manager.fit(dataset=preprocessed_packets)
 
     # select objects to preserve
     priorities = manager.prioritize(packets=packets, top_num=5)

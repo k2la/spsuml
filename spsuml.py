@@ -15,8 +15,12 @@ class Spsuml:
                 "priority": 0
             }
 
-    def fit(self, dataset):
-        pass
+    def fit(self, datasets):
+        for name, dataset in datasets.items():
+            for device_name, device in self.rnns.items():
+                if name is device_name:
+                    print("----- %s -----" % (name))
+                    device["rnn"].fit(dataset["train"], dataset["test"])
 
     def prioritize(self, packets):
         return [i for i, v in enumerate(self.networks)]

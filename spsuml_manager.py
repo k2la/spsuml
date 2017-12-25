@@ -8,5 +8,8 @@ class SpsumlManager:
     def fit(self, packets):
         self.spsuml.fit(packets)
 
-    def select(self, top_num=3):
-        return self.spsuml.select[:top_num]
+    def prioritize(self, packets, top_num=3):
+        return self.spsuml.prioritize(packets)[:top_num]
+
+    def preprocess(self):
+        pass

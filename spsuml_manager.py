@@ -4,6 +4,7 @@ import preprocessor
 class SpsumlManager:
     def __init__(self, networks):
         self.networks = networks["networks"]
+        self.preprocessor = preprocessor.PreProcessor()
 
     def setup_spsuml(self, feature_dim, time):
         self.time = time
@@ -13,10 +14,10 @@ class SpsumlManager:
     def fit(self, datasets):
         self.spsuml.fit(datasets)
 
-    def prioritize(self, packets, top_num=3):
-        return self.spsuml.prioritize(packets)[:top_num]
+    def prioritize(self, datasets, top_num=3):
+        return self.spsuml.prioritize(datasets)[:top_num]
 
-    def preprocess(self, packets):
+    def preprocess(self, packets, use_dic):
         network_dataset = {}
         # distribute
         for _, packet in enumerate(packets):
@@ -27,10 +28,13 @@ class SpsumlManager:
 
         # packet2vec
         for name, data in network_dataset.items():
-            network_dataset[name] = preprocessor.data2vec(data)
+            if use_dic:
+                network_dataset[name] = self.preprocessor.data2vec_by_dic(data)
+            else:
+                network_dataset[name] = self.preprocessor.data2vec(data)
 
         # make train_data and test_data
         datasets = { name : {"train": [], "test": []} for name, _ in network_dataset.items()}
         for name, data in network_dataset.items():
-            datasets[name]["train"], datasets[name]["test"] = preprocessor.dataset2LBdata(data, self.time)
+            datasets[name]["train"], datasets[name]["test"] = self.preprocessor.dataset2LBdata(data, self.time)
         return datasets

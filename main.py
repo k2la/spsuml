@@ -32,8 +32,8 @@ if __name__ == '__main__':
     manager.setup_spsuml(feature_dim=5, time=10)
 
     # fit networks
-    preprocessed_packets = manager.preprocess(packets=packets)
-    manager.fit(dataset=preprocessed_packets)
+    datasets = manager.preprocess(packets=packets)
+    manager.fit(dataset=datasets)
 
     # select objects to preserve
     priorities = manager.prioritize(packets=packets, top_num=5)

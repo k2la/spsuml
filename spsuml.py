@@ -6,6 +6,7 @@ class Spsuml:
         self.networks = networks
         self.rnns = {}
 
+
     def setup_rnns(self, feature_dim, time):
         for _, device in enumerate(self.networks):
             self.rnns[device["name"]] = {

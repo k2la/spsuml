@@ -5,3 +5,6 @@ class Packet:
         self.proto = proto
         self.src_size = src_size
         self.dst_size = dst_size
+
+    def to_list(self):
+        return [self.ip_src, self.ip_dst]
